@@ -1,18 +1,9 @@
-﻿namespace Views
-{
-    public class MainViewPresenter
-    {
-        private MainView _view;
-        private MainViewModel _model;
+﻿using Core.MVP;
 
-        public MainViewPresenter(MainView view, MainViewModel model)
-        {
-            _view = view;
-            _model = model;
-        }
+namespace Views
+{
+    public class MainViewPresenter : Presenter<MainViewModel, MainView>
+    {
         
-        private void LoadModelData(){}
-        private void UpdateModelData(){}
-        private void UpdateView(){}
     }
 }

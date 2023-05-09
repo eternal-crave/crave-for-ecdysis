@@ -6,6 +6,6 @@ public class SkinData : ScriptableObject
     public int ID;
     public string SkinName;
     public bool State;
-    public Sprite LockedImage;
-    public Sprite UnlockedImage;
+    public Sprite ActivatedImage;
+    public Sprite DisabledImage;
 }
