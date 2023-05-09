@@ -1,18 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinViewController : MonoBehaviour
+namespace Views
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SkinViewController : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Skin element;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void PopulateElements(List<SkinData> list)
+        {
+            //TODO implement factory
+            list.ForEach(sd => Instantiate(element,transform));
+        }
     }
 }
