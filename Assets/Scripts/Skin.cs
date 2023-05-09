@@ -11,7 +11,7 @@ public class Skin : MonoBehaviour
     private Sprite _activatedImage;
     private Sprite _disabledImage;
     
-    private void Initialize(SkinData skinData)
+    public void Initialize(SkinData skinData)
     {
         _id = skinData.ID;
         _skinName = skinData.SkinName;
@@ -20,6 +20,7 @@ public class Skin : MonoBehaviour
         _disabledImage = skinData.DisabledImage;
         
         SetActive(_state);
+        gameObject.SetActive(true);
     }
 
     private void SetActive(bool state)

@@ -1,24 +1,19 @@
-﻿using System;
-using Core.MVP;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Views
 {
-    public class MainView : MonoBehaviour, IView<MainViewData>
+    public class MainView: MBView<MainViewData>
     {
-        public Action<MainViewData> OnViewDataChanged { get; set; }
-
         [SerializeField] private SkinViewController skinViewController;
 
-        public void Initialize(MainViewData data)
+        public override void Initialize(MainViewData data)
         {
             skinViewController.PopulateElements(data.SkinsData);
         }
 
-        public void UpdateView(MainViewData data)
+        public override void UpdateView(MainViewData data)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
-
     }
 }

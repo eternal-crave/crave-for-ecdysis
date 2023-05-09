@@ -10,7 +10,7 @@ namespace Views
         public void PopulateElements(List<SkinData> list)
         {
             //TODO implement factory
-            list.ForEach(sd => Instantiate(element,transform));
+            list.ForEach(sd => Instantiate(element, transform).Initialize(sd));
         }
     }
 }

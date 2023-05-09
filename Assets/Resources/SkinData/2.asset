@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e070f9948074cffa13b4aa91ef5e743, type: 3}
-  m_Name: NewSkinData
+  m_Name: 2
   m_EditorClassIdentifier: 
-  ID: 0
-  SkinName: 
+  ID: 2
+  SkinName: Second
   State: 0
-  LockedImage: {fileID: 0}
-  UnlockedImage: {fileID: 0}
+  ActivatedImage: {fileID: 21300000, guid: a02234b528edb4e4fb27f2d68ac832b2, type: 3}
+  DisabledImage: {fileID: 21300000, guid: 2984402e5ecd6474393e94b3bdcc4a38, type: 3}
