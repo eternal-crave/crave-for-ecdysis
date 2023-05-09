@@ -8,8 +8,8 @@ namespace Views
 {
     public class MainViewModel: IModel<MainViewData>
     {
-        private List<SkinData> _skinDatas;
         public Action<MainViewData> OnDataChanged { get; set; }
+        private List<SkinData> _skinDatas;
         public void Initialize()
         {
             _skinDatas = Resources.LoadAll<SkinData>("SkinData").ToList();

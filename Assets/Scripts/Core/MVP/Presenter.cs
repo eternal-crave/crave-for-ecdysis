@@ -1,8 +1,9 @@
 ﻿namespace Core.MVP
 {
-    public abstract class Presenter<TModel, TView> 
-        where TModel : IModel<IData> 
-        where TView : IView<IData> 
+    public abstract class Presenter<TModel, TView, TData> 
+        where TModel : IModel<TData>
+        where TView : IView<TData>
+        where TData : IData
     {
         protected readonly TModel Model;
         protected readonly TView View;
@@ -11,14 +12,12 @@
         {
             Model = model;
             View = view;
-            
+
             model.OnDataChanged += View.UpdateView;
             view.OnViewDataChanged += model.UpdateData;
-            
+
             Model.Initialize();
             View.Initialize(Model.GetData());
-
-            
         }
     }
 }
