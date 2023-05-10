@@ -1,35 +1,50 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SkinData
 {
-    public class Skin : MonoBehaviour
+    public class SkinElement : MonoBehaviour
     {
+        public event Action<SkinSO> OnSelect;
+        
         [SerializeField] private Image skinImage;
+        [SerializeField] private Button button;
     
-        private int _id;
-        private string _skinName;
-        private bool _state;
-        private Sprite _activatedImage;
         private Sprite _disabledImage;
-    
+        private SkinSO _skinSO;
+
         public void Initialize(SkinSO skinSO)
         {
-            _id = skinSO.ID;
-            _skinName = skinSO.SkinName;
-            _state = skinSO.State;
-            _activatedImage = skinSO.Image;
+            _skinSO = skinSO;
             _disabledImage = skinImage.sprite;
         
-            SetActive(_state);
+            SetActive(_skinSO.State);
             gameObject.SetActive(true);
         }
 
         private void SetActive(bool state)
         {
-            _state = state;
-            skinImage.sprite = _state ? _activatedImage : _disabledImage;
+            _skinSO.State = state;
+            button.interactable = state;
+            skinImage.sprite = state ? _skinSO.Image : _disabledImage;
         }
-    
+
+        private void OnEnable()
+        {
+            button.onClick.AddListener(OnSkinSelect);
+        }
+
+        private void OnSkinSelect()
+        {
+            Debug.Log($"Selected Skin : {_skinSO.SkinName}");
+            OnSelect?.Invoke(_skinSO);
+        }
+
+        private void OnDisable()
+        {
+            button.onClick.RemoveAllListeners();
+        }
     }
 }

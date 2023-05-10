@@ -1,11 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using System;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSkinData", menuName = "Data/SkinData")]
-public class SkinSO : ScriptableObject
+namespace SkinData
 {
-    [field:SerializeField] public string SkinName{ get; set; }
-    [field:SerializeField] public bool State{ get; set; }
-    [field:SerializeField] public Sprite Image{ get; set; }
-    public int ID => GetInstanceID();
+    [CreateAssetMenu(fileName = "NewSkinData", menuName = "Data/SkinData")]
+    public class SkinSO : ScriptableObject
+    {
+        public string SkinName => name;
+        public bool State;
+        public Sprite Image;
+        public int ID => GetInstanceID();
+    }
 }

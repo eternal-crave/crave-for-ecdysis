@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using Core.MVP;
+using SkinData;
 
 namespace Views
 {
     public class MainViewData : IData
     {
-        public List<SkinData> SkinsData;
-        public MainViewData(List<SkinData> data)
+        public List<SkinCollection> SkinDataCollections;
+        public MainViewData(List<SkinCollection> data)
         {
-            SkinsData = new List<SkinData>(data);
+            SkinDataCollections = new List<SkinCollection>(data);
         }
     }
 }

@@ -1,17 +1,19 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Views;
 
-public class GameFlow : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] private MainView mainView;
-    private void Start()
+    public class GameFlow : MonoBehaviour
     {
-        StartGame();
-    }
+        [SerializeField] private MainView mainView;
+        private void Start()
+        {
+            StartGame();
+        }
 
-    private void StartGame()
-    {
-        var presenter = new MainViewPresenter(new MainViewModel(), mainView);
+        private void StartGame()
+        {
+            var presenter = new MainViewPresenter(new MainViewModel(), mainView);
+        }
     }
 }

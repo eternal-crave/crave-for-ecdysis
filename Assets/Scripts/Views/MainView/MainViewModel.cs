@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.MVP;
+using SkinData;
 using UnityEngine;
 
 namespace Views
@@ -9,20 +10,20 @@ namespace Views
     public class MainViewModel: IModel<MainViewData>
     {
         public Action<MainViewData> OnDataChanged { get; set; }
-        private List<SkinData> _skinDatas;
+        private List<SkinCollection> _skinDataCollections;
         public void Initialize()
         {
-            _skinDatas = Resources.LoadAll<SkinData>("SkinData").ToList();
+            _skinDataCollections = Resources.LoadAll<SkinCollection>("SkinData/Collections").ToList();
         }
 
         public void UpdateData(MainViewData viewData)
         {
-            _skinDatas = viewData.SkinsData;
+            _skinDataCollections = viewData.SkinDataCollections;
         }
 
         public MainViewData GetData()
         {
-            return new MainViewData(new List<SkinData>(_skinDatas));
+            return new MainViewData(new List<SkinCollection>(_skinDataCollections));
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Views
 
         public override void Initialize(MainViewData data)
         {
-            skinViewController.PopulateElements(data.SkinsData);
+            //TODO change to work with multiple skin data collections
+            skinViewController.PopulateElements(data.SkinDataCollections[0].Skins);
         }
 
         public override void UpdateView(MainViewData data)
