@@ -5,7 +5,7 @@ using SkinData;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Views
+namespace Components
 {
     public class SkinViewController : MonoBehaviour
     {
