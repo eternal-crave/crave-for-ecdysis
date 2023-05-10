@@ -1,11 +1,16 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using SkinData;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Views
 {
     public class SkinViewController : MonoBehaviour
     {
+        public event Action<SkinSO> OnSkinStateChanged;
+        
         [SerializeField] private SkinElement element;
         private List<SkinElement> _skinsList = new();
 
@@ -19,6 +24,15 @@ namespace Views
                 
                 e.Initialize(sd);
             });
+        }
+
+        public void UnlockRandomSkin()
+        {
+           List<SkinElement> lockedElements = _skinsList.Where(e => !e.SkinDataSO.State).ToList();
+           if(lockedElements.Count == 0) return;
+           SkinElement skinElement = lockedElements[Random.Range(0, lockedElements.Count)];
+           skinElement.SetActive(true);
+           OnSkinStateChanged?.Invoke(skinElement.SkinDataSO);
         }
     }
 }

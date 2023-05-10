@@ -11,6 +11,8 @@ namespace SkinData
         
         [SerializeField] private Image skinImage;
         [SerializeField] private Button button;
+
+        public SkinSO SkinDataSO => _skinSO;
     
         private Sprite _disabledImage;
         private SkinSO _skinSO;
@@ -24,7 +26,7 @@ namespace SkinData
             gameObject.SetActive(true);
         }
 
-        private void SetActive(bool state)
+        public void SetActive(bool state)
         {
             _skinSO.State = state;
             button.interactable = state;
@@ -44,7 +46,7 @@ namespace SkinData
 
         private void OnDisable()
         {
-            button.onClick.RemoveAllListeners();
+            button.onClick.RemoveListener(OnSkinSelect);
         }
     }
 }

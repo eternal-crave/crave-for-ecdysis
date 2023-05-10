@@ -1,10 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Views
 {
     public class MainView: MBView<MainViewData>
     {
         [SerializeField] private SkinViewController skinViewController;
+        [SerializeField] private Button unlockRandomSkinButton;
+
+
+        private void OnEnable()
+        {
+            unlockRandomSkinButton.onClick.AddListener(OnRandomButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            unlockRandomSkinButton.onClick.RemoveListener(OnRandomButtonClick);
+        }
+
+        private void OnRandomButtonClick()
+        {
+            skinViewController.UnlockRandomSkin();
+        }
 
         public override void Initialize(MainViewData data)
         {
