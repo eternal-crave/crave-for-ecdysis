@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SkinData;
 using UnityEngine;
+using Views;
 using Random = UnityEngine.Random;
 
 namespace Components
@@ -11,6 +12,7 @@ namespace Components
     {
         [SerializeField] private SkinElement element;
         private List<SkinElement> _skinsList = new();
+        private string _selectedSkin;
 
         public void PopulateElements(List<SkinSO> list)
         {
@@ -20,7 +22,9 @@ namespace Components
                 SkinElement e = Instantiate(element, transform);
                 _skinsList.Add(e);
                 
-                e.Initialize(sd);
+                e.OnSelect += OnElementSelect;
+                e.Initialize(sd, SaveSystem.SelectedElementName);
+                
             });
         }
 
@@ -29,8 +33,17 @@ namespace Components
            List<SkinElement> lockedElements = _skinsList.Where(e => !e.SkinDataSO.State).ToList();
            if(lockedElements.Count == 0) return;
            SkinElement skinElement = lockedElements[Random.Range(0, lockedElements.Count)];
-           skinElement.SetActive(true);
-           OnSkinStateChanged?.Invoke(skinElement.SkinDataSO);
+           skinElement.SetState(true);
+        }
+
+        private void OnElementSelect(SkinSO obj)
+        {
+            _selectedSkin= obj.SkinName;
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveSystem.SelectedElementName = _selectedSkin;
         }
     }
 }

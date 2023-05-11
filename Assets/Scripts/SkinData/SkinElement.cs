@@ -17,16 +17,17 @@ namespace SkinData
         private Sprite _disabledImage;
         private SkinSO _skinSO;
 
-        public void Initialize(SkinSO skinSO)
+        public void Initialize(SkinSO skinSO, string selectedSkinName)
         {
             _skinSO = skinSO;
             _disabledImage = skinImage.sprite;
         
-            SetActive(_skinSO.State);
+            SetState(_skinSO.State);
+            if(_skinSO.SkinName.Equals(selectedSkinName)) Select();
             gameObject.SetActive(true);
         }
 
-        public void SetActive(bool state)
+        public void SetState(bool state)
         {
             _skinSO.State = state;
             button.interactable = state;
@@ -35,10 +36,10 @@ namespace SkinData
 
         private void OnEnable()
         {
-            button.onClick.AddListener(OnSkinSelect);
+            button.onClick.AddListener(Select);
         }
 
-        private void OnSkinSelect()
+        public void Select()
         {
             Debug.Log($"Selected Skin : {_skinSO.SkinName}");
             OnSelect?.Invoke(_skinSO);
@@ -46,7 +47,7 @@ namespace SkinData
 
         private void OnDisable()
         {
-            button.onClick.RemoveListener(OnSkinSelect);
+            button.onClick.RemoveListener(Select);
         }
     }
 }
