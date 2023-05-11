@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using Views;
 
 namespace SkinData
 {
@@ -12,8 +13,8 @@ namespace SkinData
 
         public bool State
         {
-            get => PlayerPrefs.GetInt(SkinName, 0) == 1;
-            set => PlayerPrefs.SetInt(SkinName, value ? 1 : 0);
+            get => SaveSystem.GetState(SkinName);
+            set => SaveSystem.SetState(SkinName, value);
         }
         [field:SerializeField] public Sprite Image { get; private set; }
     }
