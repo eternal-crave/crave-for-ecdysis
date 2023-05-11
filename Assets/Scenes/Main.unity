@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 98251750}
   - component: {fileID: 98251751}
   - component: {fileID: 98251752}
-  - component: {fileID: 98251753}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -302,19 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &98251753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98251749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd20e437c3473640b60ac3a829c4682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  element: {fileID: 2021690761}
 --- !u!1 &421600686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,9 +1014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43b3169d7ad4a9e8795b9b0c6b4cfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinViewController: {fileID: 98251753}
+  skinViewController: {fileID: 1418685808}
   skinOverview: {fileID: 1636093689}
-  unlockRandomSkinButton: {fileID: 1161380214}
 --- !u!1 &1366467928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,8 +1163,9 @@ GameObject:
   - component: {fileID: 1418685807}
   - component: {fileID: 1418685806}
   - component: {fileID: 1418685805}
+  - component: {fileID: 1418685808}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: SkinScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1274,6 +1260,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418685803}
   m_CullTransparentMesh: 1
+--- !u!114 &1418685808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418685803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd20e437c3473640b60ac3a829c4682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 2021690761}
+  container: {fileID: 98251750}
+  unlockRandomSkinButton: {fileID: 1161380214}
 --- !u!1 &1636093687
 GameObject:
   m_ObjectHideFlags: 0
