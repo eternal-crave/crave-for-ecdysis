@@ -9,16 +9,12 @@ namespace SkinData
     public class SkinSO : ScriptableObject
     {
         public string SkinName => name;
-        public bool State;
+
+        public bool State
+        {
+            get => PlayerPrefs.GetInt(SkinName, 0) == 1;
+            set => PlayerPrefs.SetInt(SkinName, value ? 1 : 0);
+        }
         [field:SerializeField] public Sprite Image { get; private set; }
-        public int ID => GetInstanceID();
-    }
-    
-    // Using wrapper in order to correctly serialize nested scriptable objects data
-    // It is not good solution, instead it would be great to use NewtonJson, but for now use of 3rd party plugins is forbidden c,:
-    [Serializable]
-    public class SkinDataWrapper
-    {
-        public bool State;
     }
 }

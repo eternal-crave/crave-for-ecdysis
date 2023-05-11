@@ -36,10 +36,5 @@ namespace Views
         {
             throw new System.NotImplementedException();
         }
-
-        private void OnApplicationQuit()
-        {
-            Close();
-        }
     }
 }
