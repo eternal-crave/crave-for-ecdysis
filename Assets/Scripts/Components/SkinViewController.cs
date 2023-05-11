@@ -9,8 +9,6 @@ namespace Components
 {
     public class SkinViewController : MonoBehaviour
     {
-        public event Action<SkinSO> OnSkinStateChanged;
-        
         [SerializeField] private SkinElement element;
         private List<SkinElement> _skinsList = new();
 
