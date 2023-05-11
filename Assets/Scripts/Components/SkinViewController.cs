@@ -10,6 +10,8 @@ namespace Components
 {
     public class SkinViewController : MonoBehaviour
     {
+        public event Action<SkinSO> OnSkinSelect; 
+        
         [SerializeField] private SkinElement element;
         private List<SkinElement> _skinsList = new();
         private string _selectedSkin;
@@ -38,7 +40,8 @@ namespace Components
 
         private void OnElementSelect(SkinSO obj)
         {
-            _selectedSkin= obj.SkinName;
+            _selectedSkin = obj.SkinName;
+            OnSkinSelect?.Invoke(obj);
         }
 
         private void OnApplicationQuit()
