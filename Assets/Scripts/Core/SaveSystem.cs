@@ -11,6 +11,7 @@ namespace Views
         {
             string json = JsonUtility.ToJson(data);
             File.WriteAllText(Application.persistentDataPath + $"/{fileName}.json", json);
+            Debug.Log($"Data saved");
         }
 
         public static T Load<T>(string fileName, Func<T> newObjectCreation = null) where T:class
@@ -18,7 +19,9 @@ namespace Views
             if (!File.Exists(Application.persistentDataPath + $"/{fileName}.json"))
                 return newObjectCreation?.Invoke();
             string json = File.ReadAllText(Application.persistentDataPath + $"/{fileName}.json");
+            Debug.Log($"Data loaded");
             return JsonUtility.FromJson<T>(json);
+            
         }
     }
 }

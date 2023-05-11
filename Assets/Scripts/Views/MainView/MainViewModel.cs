@@ -7,22 +7,35 @@ using UnityEngine;
 
 namespace Views
 {
-    public class MainViewModel: IModel<MainViewData>
+    public class MainViewModel : IModel<MainViewData>
     {
         public Action<MainViewData> OnDataChanged { get; set; }
-        
+
         private const string FileName = "SkinData";
-        
-        private List<SkinCollection> _skinDataCollections;
+
+        private List<SkinCollectionSO> _skinDataCollections;
         private MainViewData _data;
-        
+
         public void Initialize()
         {
-            _data = SaveSystem.Load(FileName, () =>
+            _data = new MainViewData(
+                new List<SkinCollectionSO>(Resources.LoadAll<SkinCollectionSO>("SkinData/Collections").ToList()));
+            MainViewDataWrapper dataWrapper = SaveSystem.Load<MainViewDataWrapper>(FileName, () =>
             {
-                _skinDataCollections = Resources.LoadAll<SkinCollection>("SkinData/Collections").ToList();
-                return new MainViewData(new List<SkinCollection>(_skinDataCollections));
+                Debug.Log("No data to load. Using defaults");
+                return null;
             });
+
+            //Setting saved values
+            if (dataWrapper != null)
+            {
+                _data.SetData(dataWrapper);
+            }
+
+            foreach (var skinSo in _data.SkinDataCollections[0].Skins)
+            {
+                Debug.Log($"Name:{skinSo.SkinName} ---- state: {skinSo.State}");
+            }
         }
 
         public void UpdateData(MainViewData viewData)
@@ -33,6 +46,15 @@ namespace Views
         public MainViewData GetData()
         {
             return _data;
+        }
+
+        public void SaveData()
+        {
+            SaveSystem.Save(FileName, new MainViewDataWrapper(_data));
+            foreach (var skinSo in _data.SkinDataCollections[0].Skins)
+            {
+                Debug.Log($"Name:{skinSo.SkinName} ---- state: {skinSo.State}");
+            }
         }
     }
 }
