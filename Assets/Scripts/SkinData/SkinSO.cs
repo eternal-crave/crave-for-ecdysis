@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Views;
 
 namespace SkinData
@@ -9,20 +10,7 @@ namespace SkinData
     [Serializable]
     public class SkinSO : ScriptableObject
     {
-        private string _skinName;
-        public string SkinName => _skinName;
-       public bool defaultState;
-
-        public bool State
-        {
-            get => SaveSystem.GetState(SkinName, defaultState);
-            set => SaveSystem.SetState(SkinName, value);
-        }
-        [field:SerializeField] public Sprite Image { get; private set; }
-
-        public void Initialize(string parentName)
-        {
-            _skinName = $"{parentName}_{name}";
-        }
+        public bool DefaultState;
+        [field: SerializeField] public Sprite Image { get; private set; }
     }
 }

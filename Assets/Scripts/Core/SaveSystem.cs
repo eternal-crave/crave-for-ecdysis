@@ -1,20 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Views
 {
     public static class SaveSystem
     {
-        public static bool GetState(string name, bool defaultValue)
+        public static void Save<T>(string fileName, T data)
         {
-            if (!PlayerPrefs.HasKey(name)) return defaultValue;
-            return PlayerPrefs.GetInt(name, 0) == 1;
+            string json = JsonUtility.ToJson(data);
+            File.WriteAllText(Application.persistentDataPath + $"/{fileName}.json", json);
+            Debug.Log($"DATA :{data}");
+            Debug.Log($"Data saved :{json}");
         }
 
-        public static void SetState(string name, bool state) => PlayerPrefs.SetInt(name, state ? 1 : 0);
-        public static string SelectedElementName
+        public static T Load<T>(string fileName, Func<T> newObjectCreation = null) where T:class
         {
-            get => PlayerPrefs.GetString("LastSelection","");
-            set => PlayerPrefs.SetString("LastSelection", value);
+            if (!File.Exists(Application.persistentDataPath + $"/{fileName}.json"))
+                return newObjectCreation?.Invoke();
+            string json = File.ReadAllText(Application.persistentDataPath + $"/{fileName}.json");
+            Debug.Log($"Data loaded");
+            return JsonUtility.FromJson<T>(json);
+            
         }
     }
 }

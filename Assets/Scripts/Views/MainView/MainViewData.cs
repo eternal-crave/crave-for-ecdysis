@@ -8,12 +8,15 @@ namespace Views
     [Serializable]
     public class MainViewData : IData
     {
-        public List<SkinCollectionSO> SkinDataCollections { get;}
+        public List<SkinCollection> SkinDataCollections;
 
         public MainViewData(List<SkinCollectionSO> data)
         {
-            SkinDataCollections = new List<SkinCollectionSO>(data);
-            SkinDataCollections.ForEach(col => col.Skins.ForEach(s => s.Initialize(col.name)));
+            SkinDataCollections = new List<SkinCollection>();
+            foreach (SkinCollectionSO collectionSO in data)
+            {
+                SkinDataCollections.Add(new SkinCollection(collectionSO));
+            }
         }
     }
 }

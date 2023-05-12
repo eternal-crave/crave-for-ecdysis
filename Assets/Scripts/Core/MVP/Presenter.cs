@@ -13,10 +13,8 @@
             Model = model;
             View = view;
 
-            view.OnViewDataChanged += model.UpdateData;
-
-            Model.Initialize();
-            View.Initialize(Model.GetData());
+            model.OnDataChanged += View.UpdateView;
+            view.OnViewClose += model.SaveData;
         }
     }
 }

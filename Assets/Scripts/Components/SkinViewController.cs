@@ -10,14 +10,13 @@ namespace Components
 {
     public class SkinViewController : MonoBehaviour
     {
-        public event Action<SkinSO> OnSkinSelect;
+        public event Action<Skin> OnSkinSelect;
 
         [SerializeField] private SkinElement element;
         [SerializeField] private RectTransform container;
         [SerializeField] private CatalogController catalogController;
         [SerializeField] private Button unlockRandomSkinButton;
 
-        private string _selectedSkin;
         private Dictionary<int, List<SkinElement>> _lockedElements = new();
 
 
@@ -33,7 +32,7 @@ namespace Components
             catalogController.OnPageChange -= ButtonValidation;
         }
 
-        public void PopulateElements(List<SkinCollectionSO> collections)
+        public void PopulateElements(List<SkinCollection> collections)
         {
             LinkedList<RectTransform> pagesLinkedList = new LinkedList<RectTransform>();
             foreach (var collection in collections)
@@ -48,7 +47,7 @@ namespace Components
                     if(!sd.State) _lockedElements[parent.GetInstanceID()].Add(e);
 
                     e.OnSelect += OnElementSelect;
-                    e.Initialize(sd, SaveSystem.SelectedElementName);
+                    e.Initialize(sd);
                 }
             }
 
@@ -70,15 +69,9 @@ namespace Components
             unlockRandomSkinButton.gameObject.SetActive(_lockedElements[catalogController.ActivePageID].Count != 0);
         }
 
-        private void OnElementSelect(SkinSO obj)
+        private void OnElementSelect(Skin obj)
         {
-            _selectedSkin = obj.SkinName;
             OnSkinSelect?.Invoke(obj);
-        }
-
-        private void OnApplicationQuit()
-        {
-            SaveSystem.SelectedElementName = _selectedSkin;
         }
     }
 }

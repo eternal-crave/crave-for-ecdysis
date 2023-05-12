@@ -13,18 +13,21 @@ namespace Views
 
         private const string FileName = "SkinData";
 
-        private List<SkinCollectionSO> _skinDataCollections;
         private MainViewData _data;
 
         public void Initialize()
         {
-            _data = new MainViewData(
-                new List<SkinCollectionSO>(Resources.LoadAll<SkinCollectionSO>("SkinData/Collections").ToList()));
+            _data =
+                SaveSystem.Load<MainViewData>(FileName, () => new MainViewData(
+                    new List<SkinCollectionSO>(Resources.LoadAll<SkinCollectionSO>("SkinData/Collections")
+                        .ToList())));
+            OnDataChanged?.Invoke(_data);
         }
 
-        public void UpdateData(MainViewData viewData)
+        public void SaveData(MainViewData viewData)
         {
-            _skinDataCollections = viewData.SkinDataCollections;
+            _data = viewData;
+            SaveSystem.Save(FileName, _data);
         }
 
         public MainViewData GetData()

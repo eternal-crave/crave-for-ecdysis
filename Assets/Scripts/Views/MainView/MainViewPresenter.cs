@@ -6,6 +6,7 @@ namespace Views
     {
         public MainViewPresenter(MainViewModel model, MainView view) : base(model, view)
         {
+            Model.Initialize();
         }
     }
 }

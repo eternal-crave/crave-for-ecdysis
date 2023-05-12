@@ -10,10 +10,10 @@ namespace Components
         [SerializeField] private Image skinImage;
         [SerializeField] private TMP_Text skinName;
 
-        public void SetData(SkinSO data)
+        public void SetData(Skin data)
         {
             skinImage.sprite = data.Image;
-            skinName.text = data.SkinName;
+            skinName.text = data.Name;
         }
     }
 }

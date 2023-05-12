@@ -7,31 +7,32 @@ namespace SkinData
 {
     public class SkinElement : MonoBehaviour
     {
-        public event Action<SkinSO> OnSelect;
+        public event Action<Skin> OnSelect;
         
         [SerializeField] private Image skinImage;
         [SerializeField] private Button button;
 
-        public SkinSO SkinDataSO => _skinSO;
+        public Skin SkinDataSO => _skin;
     
         private Sprite _disabledImage;
-        private SkinSO _skinSO;
+        private Skin _skin;
 
-        public void Initialize(SkinSO skinSO, string selectedSkinName)
+        public void Initialize(Skin skin)
         {
-            _skinSO = skinSO;
+            _skin = skin;
             _disabledImage = skinImage.sprite;
         
-            SetState(_skinSO.State);
-            if(_skinSO.SkinName.Equals(selectedSkinName)) Select();
+            SetState(_skin.State);
+            //TODO test might not work
+            if(_skin.IsSelected) Select();
             gameObject.SetActive(true);
         }
 
         public void SetState(bool state)
         {
-            _skinSO.State = state;
+            _skin.State = state;
             button.interactable = state;
-            skinImage.sprite = state ? _skinSO.Image : _disabledImage;
+            skinImage.sprite = state ? _skin.Image : _disabledImage;
         }
 
         private void OnEnable()
@@ -41,8 +42,7 @@ namespace SkinData
 
         public void Select()
         {
-            Debug.Log($"Selected Skin : {_skinSO.SkinName}");
-            OnSelect?.Invoke(_skinSO);
+            OnSelect?.Invoke(_skin);
         }
 
         private void OnDisable()
