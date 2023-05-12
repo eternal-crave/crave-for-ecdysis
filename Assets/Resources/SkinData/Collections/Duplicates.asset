@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d382fce50e451f914d5ffcc30ad376, type: 3}
   m_Name: Duplicates
   m_EditorClassIdentifier: 
-  SkinSOList:
-  - {fileID: 11400000, guid: fcc67f9fa39a5f746947409d435a0e1a, type: 2}
-  - {fileID: 11400000, guid: fcc67f9fa39a5f746947409d435a0e1a, type: 2}
-  - {fileID: 11400000, guid: fcc67f9fa39a5f746947409d435a0e1a, type: 2}
-  - {fileID: 11400000, guid: fcc67f9fa39a5f746947409d435a0e1a, type: 2}
-  - {fileID: 11400000, guid: fcc67f9fa39a5f746947409d435a0e1a, type: 2}
+  skinSOList:
+  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}
+  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}
+  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}
+  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}
+  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}

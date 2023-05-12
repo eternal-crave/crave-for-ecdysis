@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d382fce50e451f914d5ffcc30ad376, type: 3}
   m_Name: '#DefaultCollection'
   m_EditorClassIdentifier: 
-  SkinSOList:
+  skinSOList:
   - {fileID: 11400000, guid: d72a6a2dcc8d578479cff9c51af21c8e, type: 2}
   - {fileID: 11400000, guid: f60551e0c5a8f5b4ca9194242e51a86e, type: 2}
   - {fileID: 11400000, guid: 98bde864631def64d93c9ac853f83a47, type: 2}
@@ -22,4 +22,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32d8458459c89044d999d335203fb9a6, type: 2}
   - {fileID: 11400000, guid: 3759966b6fc253a44889c95c59c625c5, type: 2}
   - {fileID: 11400000, guid: bb0a4218f7d32fd4faefd1ed5f841c23, type: 2}
-  - {fileID: 11400000, guid: d6b24b3c905508643a9ef170386a05c0, type: 2}

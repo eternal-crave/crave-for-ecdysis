@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 7
   m_EditorClassIdentifier: 
   defaultState: 0
-  <Image>k__BackingField: {fileID: 21300000, guid: 3dd516fe1af2d1542881b8c4f001d5d4, type: 3}
+  image: {fileID: 21300000, guid: 09cf0b667b6d73446a7bd398e6c34a15, type: 3}
