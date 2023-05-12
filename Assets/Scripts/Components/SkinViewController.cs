@@ -37,7 +37,7 @@ namespace Components
             LinkedList<RectTransform> pagesLinkedList = new LinkedList<RectTransform>();
             foreach (var collection in collections)
             {
-                //TODO implement factory?
+                //TODO: implement factory?
                 RectTransform parent = Instantiate(container, container.parent);
                 pagesLinkedList.AddLast(parent);
                 _lockedElements[parent.GetInstanceID()] = new List<SkinElement>();

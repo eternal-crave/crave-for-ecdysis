@@ -23,7 +23,6 @@ namespace SkinData
             _disabledImage = skinImage.sprite;
         
             SetState(_skin.State);
-            //TODO test might not work
             if(_skin.IsSelected) Select();
             gameObject.SetActive(true);
         }
