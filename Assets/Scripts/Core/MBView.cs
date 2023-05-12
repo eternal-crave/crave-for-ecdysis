@@ -9,7 +9,6 @@ namespace Views
         public event Action OnClose;
         public Action<T> OnViewDataChanged { get; set; }
         public abstract void Initialize(T data);
-        public abstract void UpdateView(T data);
         
         protected virtual void Close()
         {

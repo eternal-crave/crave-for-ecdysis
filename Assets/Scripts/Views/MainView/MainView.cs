@@ -23,13 +23,7 @@ namespace Views
 
         public override void Initialize(MainViewData data)
         {
-            //TODO change to work with multiple skin data collections
-            skinViewController.PopulateElements(data.SkinDataCollections[0].Skins);
-        }
-
-        public override void UpdateView(MainViewData data)
-        {
-            throw new System.NotImplementedException();
+            skinViewController.PopulateElements(data.SkinDataCollections);
         }
     }
 }

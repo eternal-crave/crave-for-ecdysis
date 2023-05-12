@@ -6,6 +6,5 @@ namespace Core.MVP
     {
         public Action<T> OnViewDataChanged { get; set; }
         public void Initialize(T data);
-        public void UpdateView(T data);
     }
 }

@@ -9,8 +9,9 @@ namespace SkinData
     [Serializable]
     public class SkinSO : ScriptableObject
     {
-        public string SkinName => name;
-        public bool defaultState;
+        private string _skinName;
+        public string SkinName => _skinName;
+       public bool defaultState;
 
         public bool State
         {
@@ -18,5 +19,10 @@ namespace SkinData
             set => SaveSystem.SetState(SkinName, value);
         }
         [field:SerializeField] public Sprite Image { get; private set; }
+
+        public void Initialize(string parentName)
+        {
+            _skinName = $"{parentName}_{name}";
+        }
     }
 }

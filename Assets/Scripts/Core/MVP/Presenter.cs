@@ -13,7 +13,6 @@
             Model = model;
             View = view;
 
-            model.OnDataChanged += View.UpdateView;
             view.OnViewDataChanged += model.UpdateData;
 
             Model.Initialize();
