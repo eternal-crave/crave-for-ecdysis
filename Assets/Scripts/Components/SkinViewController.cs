@@ -18,6 +18,7 @@ namespace Components
         [SerializeField] private Button unlockRandomSkinButton;
 
         private Dictionary<int, List<SkinElement>> _lockedElements = new();
+        private Skin _selectedSkin;
 
 
         private void OnEnable()
@@ -71,6 +72,13 @@ namespace Components
 
         private void OnElementSelect(Skin obj)
         {
+            if (_selectedSkin != null)
+            {
+                _selectedSkin.IsSelected = false;
+            }
+
+            _selectedSkin = obj;
+            _selectedSkin.IsSelected = true;
             OnSkinSelect?.Invoke(obj);
         }
     }

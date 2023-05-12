@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Core.MVP;
 using SkinData;
@@ -17,10 +18,13 @@ namespace Views
 
         public void Initialize()
         {
-            _data =
-                SaveSystem.Load<MainViewData>(FileName, () => new MainViewData(
-                    new List<SkinCollectionSO>(Resources.LoadAll<SkinCollectionSO>("SkinData/Collections")
-                        .ToList())));
+            var collectionScriptableObjects = Resources.LoadAll<SkinCollectionSO>(Path.Combine("SkinData","Collections"));
+            _data = SaveSystem.Load(FileName, (data) =>
+                {
+                    data.SetDependencies(collectionScriptableObjects);
+                    return data;
+                }, 
+                () => new MainViewData(collectionScriptableObjects));
             OnDataChanged?.Invoke(_data);
         }
 

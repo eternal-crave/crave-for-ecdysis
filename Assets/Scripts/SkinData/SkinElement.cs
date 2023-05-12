@@ -23,7 +23,10 @@ namespace SkinData
             _disabledImage = skinImage.sprite;
         
             SetState(_skin.State);
-            if(_skin.IsSelected) Select();
+            if (_skin.IsSelected)
+            {
+                Select();
+            }
             gameObject.SetActive(true);
         }
 
