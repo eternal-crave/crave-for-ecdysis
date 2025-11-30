@@ -75,11 +75,11 @@ Assets/
 
 ### Prerequisites
 
-- 
+- Unity 6.0.2 or other compatible version
 
 ### Installation
 
-1. Open with Unity 2021.3 or later
+1. Open the project with Unity 6.0.2 or later
 
 2. Open the main scene:
    - Navigate to `Assets/Scenes/Main.unity`
